@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    ENVIRONMENT {
+        DOCKERHUB_CREDS = credentials('dockerhub')
+        IMAGE_NAME = "mukesh/flaskapp"
+    }
+    stages {
+        stage('clone repo') {
+            steps {
+                git_branch: 'main', url: 'https://github.com/mukesh-cel/jenkins.git'
+            }
+        }
+        stage('build DockerImage') {
+            steps {
+                script {
+                    sh 'docker build -t $IMAGE_NAME:$BUILD_NUMBER_latest .'
+                }
+            }
+        }
+    }
+}
