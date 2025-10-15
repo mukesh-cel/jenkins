@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    ENVIRONMENT {
+    environment {
         DOCKERHUB_CREDS = credentials('dockerhub')
         IMAGE_NAME = "mukesh/flaskapp"
     }
