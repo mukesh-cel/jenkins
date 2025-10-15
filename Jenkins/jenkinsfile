@@ -13,7 +13,7 @@ pipeline {
         stage('build DockerImage') {
             steps {
                 script {
-                    sh 'docker build -t $IMAGE_NAME:$BUILD_NUMBER .'
+                    sh 'docker build -t $IMAGE_NAME:$BUILD_NUMBER . Jenkins/'
                 }
             }
         }
