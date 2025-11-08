@@ -39,5 +39,12 @@ pipeline {
                 }
             }
         }
+        stage('Trigger Webhook') {
+            steps {
+                script {
+                    sh "curl -X POST -H 'Content-Type: application/json' -d '{\"image\":\"$IMAGE_NAME:$BUILD_NUMBER\"}' $WEBHOOK_URL"
+                }
+            }
+        }
     }
 }
